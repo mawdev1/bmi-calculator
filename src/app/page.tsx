@@ -1,11 +1,39 @@
 'use client'
 
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent, useEffect } from 'react'
 
 interface WeightGuidance {
   category: string
   range: string
 }
+
+// AdSense component
+const AdUnit = ({ slot, style = {} }: { slot: string; style?: React.CSSProperties }) => {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
+      try {
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+      } catch (err) {
+        console.error('AdSense error:', err);
+      }
+    }
+  }, []);
+
+  if (!process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID) {
+    return null;
+  }
+
+  return (
+    <ins
+      className="adsbygoogle"
+      style={{ display: 'block', ...style }}
+      data-ad-client={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID}
+      data-ad-slot={slot}
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    />
+  );
+};
 
 export default function Home() {
   const [unitSystem, setUnitSystem] = useState('metric') // 'metric' or 'imperial'
@@ -108,10 +136,10 @@ export default function Home() {
 
   return (
     <div className='min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4'>
-      {/* Ad Placeholder 1 (Top) - Removed for Auto Ads */}
-      {/* <div className='w-full max-w-md mb-8 p-4 bg-gray-300 text-center text-gray-700'>
-        Ad Placeholder 1 (e.g., 728x90)
-      </div> */}
+      {/* Top Ad */}
+      <div className='w-full max-w-md mb-8'>
+        <AdUnit slot="1234567890" style={{ minHeight: '90px' }} />
+      </div>
 
       <main className='bg-white shadow-md rounded-lg p-8 w-full max-w-md'>
         <h1 className='text-3xl font-bold text-center mb-6 text-gray-700'>
@@ -206,10 +234,10 @@ export default function Home() {
           </div>
         )}
 
-        {/* Ad Placeholder 2 (Middle) - Removed for Auto Ads */}
-        {/* <div className='w-full my-6 p-4 bg-gray-300 text-center text-gray-700'>
-          Ad Placeholder 2 (e.g., 300x250)
-        </div> */}
+        {/* Middle Ad - After form inputs, before calculate button */}
+        <div className='w-full my-6'>
+          <AdUnit slot="2345678901" style={{ minHeight: '250px' }} />
+        </div>
 
         <button
           onClick={calculateBmi}
@@ -250,10 +278,10 @@ export default function Home() {
         )}
       </main>
 
-      {/* Ad Placeholder 3 (Bottom) - Removed for Auto Ads */}
-      {/* <div className='w-full max-w-md mt-8 p-4 bg-gray-300 text-center text-gray-700'>
-        Ad Placeholder 3 (e.g., 728x90 or 300x250)
-      </div> */}
+      {/* Bottom Ad */}
+      <div className='w-full max-w-md mt-8'>
+        <AdUnit slot="3456789012" style={{ minHeight: '250px' }} />
+      </div>
 
       <footer className='mt-12 text-center text-sm text-gray-500'>
         <p>&copy; {new Date().getFullYear()} BMI Calculator. All rights reserved.</p>

@@ -15,16 +15,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID && (
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID}`}
-            crossOrigin='anonymous'
-            strategy='afterInteractive'
-          />
-        )}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        {process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID && (
+          <>
+            <Script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID}`}
+              crossOrigin='anonymous'
+              strategy='afterInteractive'
+            />
+            <Script id="adsense-init" strategy="afterInteractive">
+              {`
+                (adsbygoogle = window.adsbygoogle || []).push({
+                  google_ad_client: "${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID}",
+                  enable_page_level_ads: true
+                });
+              `}
+            </Script>
+          </>
+        )}
+      </body>
     </html>
   );
 }
