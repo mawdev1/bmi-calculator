@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BMI Calculator
+
+A simple, responsive BMI (Body Mass Index) calculator built with Next.js and Tailwind CSS. This tool allows users to calculate their BMI using either metric (kg/cm) or imperial (lbs/ft/in) units and provides weight guidance for different BMI categories.
+
+## Features
+
+- **Unit Selection**: Switch between metric and imperial units
+- **Responsive Design**: Works on desktop and mobile devices
+- **Weight Guidance**: Shows weight ranges for different BMI categories based on your height
+- **Google AdSense Integration**: Monetized with auto-ads
+- **Modern UI**: Clean, professional interface with Tailwind CSS
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the BMI calculator.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## BMI Categories
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Underweight**: BMI less than 18.5
+- **Normal weight**: BMI 18.5-24.9
+- **Overweight**: BMI 25-29.9
+- **Obese**: BMI 30 or greater
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js 15**: React framework with App Router
+- **TypeScript**: Type-safe JavaScript
+- **Tailwind CSS**: Utility-first CSS framework
+- **Google AdSense**: Ad monetization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This app can be easily deployed on platforms like Vercel, Netlify, or any other platform that supports Next.js applications.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open source and available under the [MIT License](LICENSE).
