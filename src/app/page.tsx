@@ -7,12 +7,19 @@ interface WeightGuidance {
   range: string
 }
 
+// Extend Window interface for adsbygoogle
+declare global {
+  interface Window {
+    adsbygoogle: unknown[];
+  }
+}
+
 // AdSense component
 const AdUnit = ({ slot, style = {} }: { slot: string; style?: React.CSSProperties }) => {
   useEffect(() => {
-    if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
+    if (typeof window !== 'undefined' && window.adsbygoogle) {
       try {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (err) {
         console.error('AdSense error:', err);
       }
